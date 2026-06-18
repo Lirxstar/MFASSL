@@ -1,0 +1,13 @@
+# MAE + MFASSL on joint BraTS + OASIS-3 MRI, ViT-S/16.
+base: mae_brats_vitb16.yaml
+
+backbone:
+  name: vit_small_patch16_224
+  img_size: 224
+  in_chans: 4
+
+mfa:
+  layer: 8
+
+log:
+  out_dir: runs/mae_brats_vits16

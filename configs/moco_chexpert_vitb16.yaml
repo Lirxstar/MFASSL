@@ -1,0 +1,32 @@
+# MoCo-v3 + MFASSL on CheXpert, ViT-B/16.
+base: base.yaml
+
+framework: moco
+device: cuda
+
+backbone:
+  name: vit_base_patch16_224
+  img_size: 224
+
+moco:
+  proj_dim: 256
+  proj_hidden: 4096
+  pred_hidden: 4096
+  temperature: 0.2
+
+pretrain:
+  base_lr: 1.5e-4
+  weight_decay: 0.1
+  warmup_epochs: 40
+  batch_size: 256
+  teacher_momentum: 0.99
+
+data:
+  name: chexpert
+  root: /path/to/CheXpert-v1.0
+  csv_file: train.csv
+  num_classes: 14
+  u_policy: zeros
+
+log:
+  out_dir: runs/moco_chexpert_vitb16

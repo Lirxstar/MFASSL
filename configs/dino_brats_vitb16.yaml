@@ -1,0 +1,29 @@
+# DINO + MFASSL pretraining on joint unlabeled BraTS + OASIS-3 MRI, ViT-B/16
+base: base.yaml
+
+framework: dino
+device: cuda
+
+backbone:
+  name: vit_base_patch16_224
+  img_size: 224
+  in_chans: 4
+
+views:
+  pixel_range: zscore
+
+pretrain:
+  base_lr: 5.0e-4
+  weight_decay: 0.04
+  warmup_epochs: 10
+  batch_size: 256
+  teacher_momentum: 0.996
+
+data:
+  name: brats_oasis
+  brats_root: /path/to/BraTS2023/TrainingData
+  oasis_root: /path/to/OASIS3
+  num_classes: 3
+
+log:
+  out_dir: runs/dino_brats_vitb16

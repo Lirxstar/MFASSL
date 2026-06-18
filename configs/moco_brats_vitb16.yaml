@@ -1,0 +1,20 @@
+# MoCo-v3 + MFASSL pretraining on joint unlabeled BraTS + OASIS-3 MRI, ViT-B/16.
+base: dino_brats_vitb16.yaml
+
+framework: moco
+
+moco:
+  proj_dim: 256
+  proj_hidden: 4096
+  pred_hidden: 4096
+  temperature: 0.2
+
+pretrain:
+  base_lr: 1.5e-4
+  weight_decay: 0.1
+  warmup_epochs: 40
+  batch_size: 256
+  teacher_momentum: 0.99
+
+log:
+  out_dir: runs/moco_brats_vitb16

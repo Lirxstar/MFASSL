@@ -1,0 +1,23 @@
+# MAE + MFASSL pretraining on CelebA-HQ, ViT-B/16.
+base: dino_celeba_vitb16.yaml
+
+framework: mae
+
+mae:
+  decoder_dim: 512
+  decoder_depth: 8
+  decoder_heads: 16
+  mask_ratio: 0.75
+
+pretrain:
+  base_lr: 1.5e-4
+  weight_decay: 0.05
+  warmup_epochs: 40
+  batch_size: 256
+
+views:
+  n_global: 1
+  n_local: 0
+
+log:
+  out_dir: runs/mae_celeba_vitb16

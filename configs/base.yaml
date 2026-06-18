@@ -1,0 +1,73 @@
+# Base MFASSL config.
+seed: 0
+device: cuda
+
+backbone:
+  name: vit_base_patch16_224
+  img_size: 224
+  patch_size: 16
+  in_chans: 3
+
+mfa:
+  layer: 8
+  a_init: 0.5
+  b_init: 1.0
+  alpha_init: 0.1
+  gamma_init: 0.1
+  eps: 1.0e-6
+
+objective:
+  lambda_eq: 0.5
+  lambda_mid: 1.0
+  beta: 1.0
+
+schedule:
+  t_sym: 10
+  t_mfa: 12
+  t_gate: 10
+
+views:
+  axis_jitter: 0.03
+  mirror_size: 224
+  n_global: 2
+  n_local: 8
+  global_size: 224
+  local_size: 96
+  augment: true
+  pixel_range: unit_centered
+
+framework: dino
+
+pretrain:
+  epochs: 300
+  optimizer: adamw
+
+  base_lr: 5.0e-4
+  weight_decay: 0.04
+  warmup_epochs: 10
+  teacher_momentum: 0.996
+  teacher_momentum_final: 1.0
+  freeze_last_layer_epochs: 1
+  teacher_temp_warmup_epochs: 0
+  batch_size: 256
+
+dino:
+  out_dim: 65536
+  student_temp: 0.1
+  teacher_temp: 0.04
+  center_momentum: 0.9
+  head_hidden_dim: 2048
+  head_bottleneck_dim: 256
+  head_nlayers: 3
+
+data:
+  name: dataset_name
+  root: null
+  num_classes: 14
+  batch_size: 256
+  num_workers: 8
+  limit: null
+
+log:
+  out_dir: runs/default
+  log_every: 50

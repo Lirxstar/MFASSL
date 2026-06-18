@@ -1,0 +1,12 @@
+# MAE + MFASSL on CheXpert, ViT-S/16.
+base: mae_chexpert_vitb16.yaml
+
+backbone:
+  name: vit_small_patch16_224
+  img_size: 224
+
+mfa:
+  layer: 8
+
+log:
+  out_dir: runs/mae_chexpert_vits16

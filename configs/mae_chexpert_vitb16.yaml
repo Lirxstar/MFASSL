@@ -1,0 +1,35 @@
+# MAE + MFASSL on CheXpert, ViT-B/16.
+base: base.yaml
+
+framework: mae
+device: cuda
+
+backbone:
+  name: vit_base_patch16_224
+  img_size: 224
+
+mae:
+  decoder_dim: 512
+  decoder_depth: 8
+  decoder_heads: 16
+  mask_ratio: 0.75
+
+pretrain:
+  base_lr: 1.5e-4
+  weight_decay: 0.05
+  warmup_epochs: 40
+  batch_size: 256
+
+views:
+  n_global: 1
+  n_local: 0
+
+data:
+  name: chexpert
+  root: /path/to/CheXpert-v1.0
+  csv_file: train.csv
+  num_classes: 14
+  u_policy: zeros
+
+log:
+  out_dir: runs/mae_chexpert_vitb16
