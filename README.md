@@ -1,5 +1,28 @@
 # Mirror-Fusion Attention for Reflection-Aware Self-Supervised Representation Learning
 
+<div align="center">
+
+<a href="https://arxiv.org/pdf/2607.00850">
+  <img src="https://img.shields.io/badge/Paper-PDF-brightgreen.svg" alt="Paper">
+</a>
+
+<a href="https://arxiv.org/abs/2607.00850">
+  <img src="https://img.shields.io/badge/arXiv-2607.00850-b31b1b.svg" alt="arXiv">
+</a>
+
+</div>
+
+```bibtex
+@misc{li2026mirrorfusion,
+      title={Mirror-Fusion Attention for Reflection-Aware Self-Supervised Representation Learning}, 
+      author={Ruixin Li and Jin Liu and Yuling Shi and Stefano Lodi},
+      year={2026},
+      eprint={2607.00850},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2607.00850}, 
+}
+
 Official implementation of MFASSL, a reflection-aware add-on for vision self-supervised learning based on Vision Transformers.
 
 ![MFASSL overview](figs/over.jpg)
