@@ -22,6 +22,7 @@
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2607.00850}, 
 }
+```
 
 Official implementation of MFASSL, a reflection-aware add-on for vision self-supervised learning based on Vision Transformers.
 
